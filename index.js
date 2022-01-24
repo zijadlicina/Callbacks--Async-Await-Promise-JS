@@ -1,21 +1,16 @@
-// Async code example
-
 
 console.log('Start');
-/*
-callback function - when data are avalilable send this function in callback to "Callstack"
-() => {
 
+// Example of some server who returns some data
+function loginUser(email, password){
+    setTimeout(() => {
+        console.log("Now we have the date");
+        return {userEmail: email}
+    }, 3000);
 }
-*/
 
-let items = [1, 2, 3, 4, 5];
-
-// fore_each takes callbacks function
-items.forEach((item) => {
-    console.log(item);
-})
+const user = loginUser("user1@gmail.com", 123456);
+console.log(user);  // user give us 'undefined'
 
 console.log("End");
 
-// Callbacks are not necessary async, they can be sync too
