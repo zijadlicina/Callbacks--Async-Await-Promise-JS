@@ -1,8 +1,4 @@
 
-// If we want to send some callback functions on 'onFailure' stage
-// our code will be really complicated
-
-// Because of this we are using "Promise":
 console.log('Start');
 
 function loginUser(email, password){
@@ -29,9 +25,28 @@ const user = loginUser("user1@gmail.com", 123456, (user) => {
 }); 
 */
 
+/*
 loginUser("user1", 123)
     .then(user => getUserVideos(user.userEmail))
     .then(videos => console.log(videos))
+*/
+
+// API automaticaly return us promise
+// How we can use this code SYNC later, in which we can use promise like sync way
+// Simple and easy syntax to write a async code
+
+async function displayUser(){
+    try {
+        const loggedUser = await loginUser("user1", 1234);
+        console.log(loggedUser.userEmail);
+        const videos = await getUserVideos(loggedUser.userEmail);
+        console.log(videos);   
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+displayUser();
 
 console.log("End");
 
